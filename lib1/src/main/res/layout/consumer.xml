@@ -2,10 +2,18 @@
 <layout  xmlns:android="http://schemas.android.com/apk/res/android">
 
     <FrameLayout
+        android:id="@+id/consumer_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/producer"/>
+        <include
+            android:id="@+id/producer_container"
+            layout="@layout/producer"/>
+
+        <TextView
+            android:id="@+id/consumer_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </FrameLayout>
 
