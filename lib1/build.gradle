@@ -25,18 +25,23 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures {
-
         dataBinding true
+    }
+}
+
+// Substitute Dependencies
+afterEvaluate {
+    configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            if (project.hasProperty("useAar")) {
+                substitute project(':lib2') using module('com.ckroetsch:lib2:1.0')
+            }
+        }
     }
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
-
-    if (project.hasProperty("useAar")) {
-        implementation 'com.ckroetsch:lib2:1.0'
-    } else {
-        implementation project(':lib2')
-    }
+    implementation project(':lib2')
 }
